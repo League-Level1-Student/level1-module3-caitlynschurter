@@ -1,0 +1,46 @@
+float x = 400;
+float y = 40;
+float g = 0.1;
+float v = .5;
+float flap = .4;
+int pipeX = 800;
+int pipeY = 0;
+int pipeGap = 150;
+int upperPipeHeight = (int) random(100, 400);
+
+void setup(){
+size (800,600);
+}
+
+void draw() {
+background(191, 255, 253);
+
+if(mousePressed){
+  v = v - flap;
+  }
+  
+  v = v + g;
+  y = y + v;
+  stroke(254, 229, 255);
+  fill(254, 229, 255);
+  ellipse(x, y, 30,30);
+
+if(y>590){
+y = 590;
+v = 0;
+}
+fill(221, 183, 255);
+stroke(221, 183, 255);
+rect(pipeX, 0, 100, upperPipeHeight);
+pipeX = pipeX - 3;
+
+fill(221, 183, 255);
+stroke(221, 183, 255);
+rect(pipeX, upperPipeHeight + pipeGap, 100, 1000);
+pipeX = pipeX - 3;
+
+if(pipeX < 0){
+upperPipeHeight = (int) random(100, 400);
+pipeX = 800;
+}
+}

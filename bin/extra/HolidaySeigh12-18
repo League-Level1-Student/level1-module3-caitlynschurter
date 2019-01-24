@@ -1,0 +1,51 @@
+PImage photo;
+PImage photo2;
+void setup(){
+size(800,800);
+photo = loadImage("Santa_Sleigh");
+photo2 = loadImage("Flying_Alpaca");
+}
+
+void draw(){
+  background(12, 50, 155);
+  fill(234, 253, 255);
+  stroke(234, 253, 255);
+  rect(0, 600, 800, 500);
+  
+  stroke(102, 70, 16);
+  fill(102, 70, 16);
+  rect(375, 450, 50, 200);
+  
+  drawTree();
+  drawLights();
+  drawSleigh();
+}
+
+void drawTree(){
+  fill(0, 178, 139);
+  stroke(0, 178, 139);
+  triangle(400, 200, 500, 500, 300, 500);
+}
+
+void drawLights(){
+fill(255, 221, 250);
+stroke(255, 221, 250);
+ellipse(400, 400, 10, 10);
+ellipse(360, 425, 10, 10);
+ellipse(380, 320, 10, 10);
+ellipse(370, 460, 10, 10);
+ellipse(460, 450, 10, 10);
+ellipse(490, 490, 10, 10);
+ellipse(430, 350, 10, 10);
+ellipse(420, 480, 10, 10);
+ellipse(410, 250, 10, 10);
+ellipse(310, 480, 10, 10);
+
+stroke(249, 255, 94);
+fill(249, 255, 94);
+ellipse(400, 200, 50, 50);
+}
+
+void drawSleigh(){
+
+}
