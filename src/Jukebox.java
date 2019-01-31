@@ -1,3 +1,4 @@
+
 /*
  *    Copyright (c) The League of Amazing Programmers 2013-2018
  *    Level 1
@@ -12,8 +13,10 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
@@ -22,6 +25,11 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
 public class Jukebox implements Runnable, MouseListener {
+	JLabel labelUndyne;
+	JLabel labelFrisk;
+	JButton button;
+	
+	Song song;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
@@ -31,22 +39,33 @@ public class Jukebox implements Runnable, MouseListener {
 
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-		Song Undyne = new Song("BattleAgainstATrueHero.mp3");
 		// 5. Play the Song
-		Undyne.play();
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to choose
 		 * which song to play. You can use can use a different button for each song, or
 		 * a picture of the album cover. When the button or album cover is clicked, stop
 		 * the currently playing song, and play the one that was selected.
 		 */
-	String battleString = "BattleAgainstATrueHero-Image.jpg";
-	JLabel battleLabel;
-	battleLabel = loadImage(battleString);
-	battleLabel.addMouseListener(this);
-	//get mouse listener working
-		
-		
+
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		frame.setSize(900, 500);
+		frame.setTitle("Choose a song! :3");
+		JPanel panel = new JPanel();
+		frame.add(panel);
+		labelUndyne = loadImage("BattleAgainstATrueHero-Image.jpg");
+		labelFrisk = loadImage("Frisk.jfif");
+		panel.add(labelUndyne);
+		panel.add(labelFrisk);
+		labelUndyne.addMouseListener(this);
+		labelFrisk.addMouseListener(this);
+		button = new JButton();
+		panel.add(button);
+		button.setSize(50,20);
+		button.setText("Stop Music");
+		button.addMouseListener(this);
+		frame.pack();
+
 	}
 
 	/* Use this method to add album covers to your Panel. */
@@ -58,32 +77,44 @@ public class Jukebox implements Runnable, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		if (song != null) {	
+			//if stop button pressed, stops song (if one's playing)
+			song.stop();
+
+		}
+		if (arg0.getSource().equals(labelUndyne)) {
+			song = new Song("BattleAgainstATrueHero.mp3");
+			song.play();
+		} else if (arg0.getSource().equals(labelFrisk)) {
+			song = new Song("Undertale.mp3");
+			song.play();
+		}
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
